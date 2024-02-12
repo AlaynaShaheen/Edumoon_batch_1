@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tutor</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/animejs@3.0.1/lib/anime.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <script src="https://kit.fontawesome.com/eb3c934bad.js" crossorigin="anonymous"></script>
+    <style>
+        
+   .responsive{
+    position:relative;
+  width: 70%; 
+  }
+  @media all and (max-width:480px){
+    .responsive{
+        width:100%;
+    }
+  }
+
+        /* instructions */
+        .instructions {
+            margin-top: 20px;
+
+        }
+
+        .instruction {
+            /* border: 1px solid black; */
+            margin: 10px 0px;
+            border-radius: 5px;
+            background-color: #bff1ed;
+            padding: 10px 10px;
+            width: 90%;
+        }
+
+        .instruction_border {
+            border-bottom: 5px solid #286560;
+            width: 500px;
+            margin-bottom: 20px;
+        }
+
+        .instruction_img {
+            margin-left: 10px;
+        }
+
+        .instruction_details {
+            margin-left: 40px;
+        }
+
+        h2 {
+            color: #13272f;
+            margin-bottom: 20px;
+        }
+
+        .reveal {
+            position: relative;
+            transform: translateY(50px);
+            opacity: 0;
+            transition: 1.9s all ease;
+        }
+
+        .active {
+            transform: translateY(0);
+            opacity: 0.9;
+        }
+
+
+        .testimonial_border {
+            width: 160px;
+            height: 5px;
+            background: #286560;
+            margin: 26px auto;
+        }
+
+        .testimonials {
+            margin-top: 50px;
+        }
+
+        .testimonial {
+
+            background: #16b4a7;
+            margin: 10px;
+            margin-bottom: 50px;
+            width: 350px;
+            height: 250px;
+            padding: 20px;
+            line-height: 20px;
+            transition: all .2s linear;
+            transform: scale(0);
+
+        }
+
+        .button {
+display: inline-block;
+padding: 12px 24px;
+border: 1px solid #4f4f4f;
+border-radius: 4px;
+transition: all 0.2s ease-in;
+position: relative;
+overflow: hidden;
+font-size: 19px;
+color: black;
+z-index: 1;
+}
+
+.button:before {
+content: "";
+position: absolute;
+left: 50%;
+transform: translateX(-50%) scaleY(1) scaleX(1.25);
+top: 100%;
+width: 140%;
+height: 180%;
+background-color: rgba(0, 0, 0, 0.05);
+border-radius: 50%;
+display: block;
+transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+z-index: -1;
+}
+
+.button:after {
+content: "";
+position: absolute;
+left: 55%;
+transform: translateX(-50%) scaleY(1) scaleX(1.45);
+top: 180%;
+width: 160%;
+height: 190%;
+background-color: #39bda7;
+border-radius: 50%;
+display: block;
+transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+z-index: -1;
+}
+
+.button:hover {
+color: #ffffff;
+border: 1px solid #39bda7;
+}
+
+.button:hover:before {
+top: -35%;
+background-color: #39bda7;
+transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+}
+
+.button:hover:after {
+top: -45%;
+background-color: #39bda7;
+transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+}
+        .testimonial_up>svg {
+            width: 58px;
+            height: 78px;
+        }
+
+        .testimonial_right {
+            margin-left: 20px;
+            margin-top: 15px;
+        }
+
+        .testimonial_description {
+            margin-top: 21px;
+
+        }
+
+        .testimonial_name {
+            margin-left: 0px;
+            margin-top: -1px;
+        }
+
+        .testimonial:hover {
+            background-color: #33c7bb;
+        }
+
+        .testimonials_row {
+            margin: 0px;
+        }
+
+        /* footer */
+
+        .footer {
+            margin-top: 150px;
+            line-height: 1.5;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            bottom: 0;
+        }
+
+        .container {
+            max-width: 1170px;
+            margin: auto;
+        }
+
+
+
+        ol,
+        ul {
+            list-style: none;
+            padding-left: 0px !important
+        }
+
+        .footer {
+            background-color: #13272f;
+            padding: 70px 0;
+        }
+
+        .footer-col {
+            width: 25%;
+            padding: 0 15px;
+        }
+
+        .footer-col h4 {
+            font-size: 18px;
+            color: #ffffff;
+            text-transform: capitalize;
+            margin-bottom: 35px;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .footer-col h4::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            background-color: #286560;
+            height: 2px;
+            box-sizing: border-box;
+            width: 50px;
+        }
+
+        .footer-col ul li:not(:last-child) {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            font-size: 16px;
+            text-transform: capitalize;
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 300;
+            color: #bbbbbb;
+            display: block;
+            transition: all 0.3s ease;
+        }
+
+        .footer-col ul li a:hover {
+            color: #ffffff;
+            padding-left: 8px;
+        }
+
+        .footer-col .social-links a {
+            display: inline-block;
+            height: 40px;
+            width: 40px;
+            background-color: rgba(255, 255, 255, 0.2);
+            margin: 0 10px 10px 0;
+            text-align: center;
+            line-height: 40px;
+            border-radius: 50%;
+            color: #ffffff;
+            transition: all 0.5s ease;
+        }
+
+        .footer-col .social-links a:hover {
+            color: #24262b;
+            background-color: #ffffff;
+        }
+
+        @media(max-width:970px){
+            .content{
+                position: relative;
+                left: -60px;
+            }
+        }
+        @media(max-width:767px) {
+            .footer-col {
+                width: 50%;
+                margin-bottom: 30px;
+            }
+
+            .herosection_img {
+                display: none;
+            }
+            
+            .content{
+                position: relative;
+                left: -60px;
+            }
+        }
+
+        @media(max-width:574px) {
+            .footer-col {
+                width: 100%;
+            }
+            
+            .instruction_border{
+                width: auto;
+            }
+
+        }
+        @media(max-width:380px){
+            
+
+        }
+
+   
+
+.row{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin:  0px;
+    height: 1000px;
+    left: 0px;
+}
+.col1{
+    top: 10px;
+    flex-basis: 40%;
+    position: relative;
+    margin-left: 0px;
+    width: 30%;
+}
+
+
+
+.col2{
+
+    width: 50%;
+    position: relative;
+    /* flex-basis: 100%; */
+    /* display: flex; */
+    left: 0px;
+    top: 30px;
+    border: #000000 solid ;
+}
+
+
+
+@media only screen and (max-width:1050px)
+{
+    .row{
+        flex-direction: column;
+        margin: 50px 0;
+        height: 920px;
+    }
+    .col2{
+        position: relative;
+        /* flex-basis: 100%; */
+        margin-bottom: 0;
+        left: 0px;
+        top: 60px;
+        width: 100%;
+        
+    }
+    .col2.main-logo{
+        flex-basis: 100px;
+        height: fit-content;
+        width: fit-content;
+    }
+    .col1{
+        display: none;
+        flex-basis: 100%;
+        top: 0px;
+        left: 0px;
+
+    }
+    .col1 h2{
+        font-size: 35px;
+    }
+    .col1 h3{
+        font-size: 20px;
+    }
+    .col1 h4{
+        font-size: 15px;
+    }
+}
+@media(max-width:574px) {
+            .col2{
+                left: 0px;
+                top: 60px;
+                width: 120%;
+            }
+
+            .row{
+                height: 810px;
+                margin-bottom: 120px;
+            }
+
+        }
+    @media(max-width:490px){
+        .col2{
+            left: 0px;
+        }
+        .works_flex-box{
+            width: 10%;
+        }
+        .works_flex-box h4{
+            font-size: 15px;
+        }
+        .works_flex-box-in{
+            width: 10%;
+        }
+        .works_flex-box-in h4{
+            font-size: 15px;
+        }
+    }
+#hero {
+    position: relative;
+    background-color: rgb(255, 255, 255);
+    width: 105%;
+    max-width: 100%; 
+    margin: 0; 
+    top: 20%;
+    left: -1%;
+}
+.image {
+    display: block;
+    left: 0%;
+    top: 2%;
+    opacity: 0.4;
+    width: 101.8%;
+    height: 400px;
+    background-color: #000000;
+    border-radius: 5px;
+}
+.text {
+    position: absolute;
+    top: 80%;
+    left: 59%;
+    transform: translate(-50%, -50%);
+    color: #000000; 
+    font-size: 2rem; 
+    font-weight: bold;
+    width: 100%;
+    max-width: 600px;
+}
+.quote{
+    position:absolute;
+    top: 54%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #000000; 
+    font-size: 2rem; 
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    max-width: 550px;
+}
+.logo{
+    position: absolute;
+    top: 21%;
+    left: 49%;
+    transform: translate(-50%, -50%);
+    color: #000000;
+    font-size: 2rem; 
+    font-weight: bold;
+    text-align: center;
+    width: 25%;
+    max-width: 800px;
+    
+    opacity: 1; 
+}
+/*stats*/
+.works_container {
+            padding: 30px 0;
+            text-align: center;
+            transition: 0.5s;
+            position: relative;
+        }
+
+        /* .works_flex-container {
+            display: flex;
+            flex-wrap: wrap;
+            height: auto;
+            align-items: center;
+            justify-content: center;
+        } */
+
+        .works_flex-box {
+            width: 20%;
+            height: auto;
+            align-items: center;
+            justify-content: center;
+            border: 2px;
+
+        }
+
+        .works_border {
+            width: 160px;
+            height: 5px;
+            background: #286560;
+            margin: 26px auto;
+        }
+
+        .dot {
+            height: 100px;
+            width: 100px;
+            background-color: #16b4a7;
+            border-radius: 50%;
+            display: inline-block;
+            align-items: center;
+            justify-content: center;
+        }
+        .works_container-in {
+            padding: 30px 0;
+            text-align: center;
+            transition: 0.5s;
+            position: relative;
+        }
+        .works_flex-box-in{
+            width: 50%;
+            height: auto;
+            align-items: center;
+            justify-content: center;
+            border: 2px;
+
+        }
+
+        .col1 img{
+                width: 100%;
+                position: relative;
+                left: 30px;
+            }
+
+    </style>
+        <style>
+            .button {
+                font-size: 20px;
+                padding: 10px 20px;
+                border-radius: 5px;
+                border: none;
+                cursor: pointer;
+            }
+            
+        </style>
+</head>
+
+<body>
+    <div class="container" id="hero">
+    
+        <!-- style=" text-align: left; margin-top:50px;" -->
+        
+        <div class="row">
+            <div class="col1 responsive">
+                <img src="pn.PNG">
+  
+            </div>
+            <div class="col2">
+                <iframe src="https://www.cognitoforms.com/EdumoonTutors/BecomeATutorNow" width="100%" height="900"></iframe>
+               
+            </div>
+            
+        </div>
+    </div>
+
+    <div class="works_container">
+        <div class="works_row">
+            <div class="works_flex-container d-flex flex-wrap justify-content-center">
+                <div class="works_flex-box ">
+                    
+                    
+                    <br>
+                    <br>
+                    <span
+                            class="dot">
+                            <i class="bi bi-person"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40S" fill="white" class="bi bi-person" viewBox="0 0 16 16">
+                                <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"/>
+                            </svg>
+                        </span>
+                    
+                    <br><br>
+                    <h4>10,000+ Students</h4>
+                </div>
+                <div class="works_flex-box">
+                
+                    
+                    <br>
+                    <br>
+                    <span class="dot">
+                        <i class="bi bi-ui-checks"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40S" fill="white" class="bi bi-ui-checks" viewBox="0 0 16 16">
+                            <path d="M7 2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-1zM2 1a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H2zm0 8a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2H2zm.854-3.646a.5.5 0 0 1-.708 0l-1-1a.5.5 0 1 1 .708-.708l.646.647 1.646-1.647a.5.5 0 1 1 .708.708l-2 2zm0 8a.5.5 0 0 1-.708 0l-1-1a.5.5 0 0 1 .708-.708l.646.647 1.646-1.647a.5.5 0 0 1 .708.708l-2 2zM7 10.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-1zm0-5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0 8a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
+                          </svg>
+                        </span>
+                    
+                    <br>
+                    <br>
+                    <h4>100+ Reviews</h4>
+                </div>
+                <div class="works_flex-box">
+                   
+                    
+                    <br>
+                    <br>
+                     <span class="dot">
+                        <i class="bi bi-person"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40S" fill="white" class="bi bi-person" viewBox="0 0 16 16">
+                            <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"/>
+                          </svg>
+                        </span>
+                    
+                    <br>
+                    <br>
+                    <h4>50+ Trusted Instructors</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- instructions -->
+    <div class="instructions d-flex flex-column">
+
+        <center>
+            <h2>To become a tutor on our website, follow these step-by-step instructions:</h2>
+            <div class="instruction_border"></div>
+        </center>
+        <div class="content">
+        <div class="instruction d-flex flex-row instruction_1">
+            <div class="instruction_img">
+
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                    class="bi bi-1-square-fill" viewBox="0 0 16 16">
+                    <path
+                        d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2Zm7.283 4.002V12H7.971V5.338h-.065L6.072 6.656V5.385l1.899-1.383h1.312Z" />
+                </svg>
+            </div>
+            <div class="instruction_details">
+                <div class="instruction_heading">
+                    <h5>Create a Profile</h5>
+                </div>
+                <div class="instruction_descript">
+                    <p>Get started by filling out a form with your full name,contact details (email and phone number), and relevent qualifications or certifications to create your comprehensive profile</p>
+                </div>
+            </div>
+
+        </div>
+        <div class="instruction d-flex flex-row instruction_2">
+            <div class="instruction_img">
+
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                    class="bi bi-2-square-fill" viewBox="0 0 16 16">
+                    <path
+                        d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2Zm4.646 6.24v.07H5.375v-.064c0-1.213.879-2.402 2.637-2.402 1.582 0 2.613.949 2.613 2.215 0 1.002-.6 1.667-1.287 2.43l-.096.107-1.974 2.22v.077h3.498V12H5.422v-.832l2.97-3.293c.434-.475.903-1.008.903-1.705 0-.744-.557-1.236-1.313-1.236-.843 0-1.336.615-1.336 1.306Z" />
+                </svg>
+            </div>
+            <div class="instruction_details">
+                <div class="instruction_heading">
+                    <h5>Choose your Subjects and Expertise</h5>
+                </div>
+                <div class="instruction_descript">
+                    <p>Choose subjects aligned with your expertise and teaching experience, including academic subjects, languages, test preparation, music, and more, to showcase your effective tutoring skills.
+                    </p>
+                </div>
+            </div>
+    </div>
+    <div class="instruction d-flex flex-row instruction_3">
+        <div class="instruction_img">
+
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-3-square-fill" viewBox="0 0 16 16">
+                <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2Zm5.918 8.414h-.879V7.342h.838c.78 0 1.348-.522 1.342-1.237 0-.709-.563-1.195-1.348-1.195-.79 0-1.312.498-1.348 1.055H5.275c.036-1.137.95-2.115 2.625-2.121 1.594-.012 2.608.885 2.637 2.062.023 1.137-.885 1.776-1.482 1.875v.07c.703.07 1.71.64 1.734 1.917.024 1.459-1.277 2.396-2.93 2.396-1.705 0-2.707-.967-2.754-2.144H6.33c.059.597.68 1.06 1.541 1.066.973.006 1.6-.563 1.588-1.354-.006-.779-.621-1.318-1.541-1.318Z"/>
+              </svg>
+        </div>
+        <div class="instruction_details">
+            <div class="instruction_heading">
+                <h5> Describe Your Teaching Experience </h5>
+            </div>
+            <div class="instruction_descript">
+                <p>Share a concise overview of your teaching experience, including years of tutoring/teaching, age groups taught, and notable achievements, enabling students to grasp your teaching background and expertise.</p>
+            </div>
+        </div>
+
+    </div>
+    <div class="instruction d-flex flex-row instruction_4">
+        <div class="instruction_img">
+
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-4-square-fill" viewBox="0 0 16 16">
+                <path d="M6.225 9.281v.053H8.85V5.063h-.065c-.867 1.33-1.787 2.806-2.56 4.218Z"/>
+                <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2Zm5.519 5.057c.22-.352.439-.703.657-1.055h1.933v5.332h1.008v1.107H10.11V12H8.85v-1.559H4.978V9.322c.77-1.427 1.656-2.847 2.542-4.265Z"/>
+              </svg>
+        </div>
+        <div class="instruction_details">
+            <div class="instruction_heading">
+                <h5>Set Your Availability </h5>
+            </div>
+            <div class="instruction_descript">
+                <p> Specify your availability for tutoring sessions by indicating your preferred days and times to teach, enabling us to match you with students seeking lessons during your desired time slots.
+                </p>
+            </div>
+        </div>
+
+    </div>
+    <div class="instruction d-flex flex-row instruction_5">
+        <div class="instruction_img">
+
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-5-square-fill" viewBox="0 0 16 16">
+                <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2Zm5.994 12.158c-1.57 0-2.654-.902-2.719-2.115h1.237c.14.72.832 1.031 1.529 1.031.791 0 1.57-.597 1.57-1.681 0-.967-.732-1.57-1.582-1.57-.767 0-1.242.45-1.435.808H5.445L5.791 4h4.705v1.103H6.875l-.193 2.343h.064c.17-.258.715-.68 1.611-.68 1.383 0 2.561.944 2.561 2.585 0 1.687-1.184 2.806-2.924 2.806Z"/>
+              </svg>
+        </div>
+        <div class="instruction_details">
+            <div class="instruction_heading">
+                <h5>Highlight Your Teaching Approach </h5>
+            </div>
+            <div class="instruction_descript">
+                <p> Provide a glimpse into your teaching philosophy by describing your tutoring style and approach, highlighting unique methodologies/strategies that ensure effective learning outcomes for students.
+                </p>
+            </div>
+        </div>
+
+    </div>
+    <div class="instruction d-flex flex-row instruction_6">
+        <div class="instruction_img">
+
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-6-square-fill" viewBox="0 0 16 16">
+                <path d="M8.111 7.863c-.92 0-1.564.65-1.564 1.576 0 1.032.703 1.635 1.558 1.635.868 0 1.553-.533 1.553-1.629 0-1.06-.744-1.582-1.547-1.582Z"/>
+                <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2Zm6.21 3.855c1.612 0 2.515.99 2.573 1.899H9.494c-.1-.358-.51-.815-1.312-.815-1.078 0-1.817 1.09-1.805 3.036h.082c.229-.545.855-1.155 1.98-1.155 1.254 0 2.508.88 2.508 2.555 0 1.77-1.218 2.783-2.847 2.783-.932 0-1.84-.328-2.409-1.254-.369-.603-.597-1.459-.597-2.642 0-3.012 1.248-4.407 3.117-4.407Z"/>
+              </svg>
+        </div>
+        <div class="instruction_details">
+            <div class="instruction_heading">
+                <h5> Await Our Reply</h5>
+            </div>
+            <div class="instruction_descript">
+                <p> After submitting your profile, sit back and relax. Our team will review your application and contact you soon. We may reach out via phone or email to further discuss 
+                </p>
+            </div>
+        </div>
+
+    </div>
+    <div class="instruction d-flex flex-row instruction_7">
+        <div class="instruction_img">
+
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-7-square-fill" viewBox="0 0 16 16">
+                <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2Zm3.37 5.11V4.001h5.308V5.15L7.42 12H6.025l3.317-6.82v-.07H5.369Z"/>
+              </svg>
+        </div>
+        <div class="instruction_details">
+            <div class="instruction_heading">
+                <h5>Complete Verification Process</h5>
+            </div>
+            <div class="instruction_descript">
+                <p> For authenticity and quality assurance, we may conduct additional verification steps such as qualification checks, background checks, or references from previous students/employers—rest assured, we'll guide you through the process if necessary.
+                </p>
+            </div>
+        </div>
+
+    </div>
+    <div class="instruction d-flex flex-row instruction_8">
+        <div class="instruction_img">
+
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-8-square-fill" viewBox="0 0 16 16">
+                <path d="M6.623 6.094c0 .738.586 1.254 1.383 1.254s1.377-.516 1.377-1.254c0-.733-.58-1.23-1.377-1.23s-1.383.497-1.383 1.23Zm-.281 3.644c0 .838.72 1.412 1.664 1.412.943 0 1.658-.574 1.658-1.412 0-.843-.715-1.424-1.658-1.424-.944 0-1.664.58-1.664 1.424Z"/>
+                <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2Zm8.97 9.803c0 1.394-1.218 2.355-2.988 2.355-1.763 0-2.953-.955-2.953-2.344 0-1.271.95-1.851 1.647-2.003v-.065c-.621-.193-1.33-.738-1.33-1.781 0-1.225 1.09-2.121 2.66-2.121s2.654.896 2.654 2.12c0 1.061-.738 1.595-1.336 1.782v.065c.703.152 1.647.744 1.647 1.992Z"/>
+              </svg>
+        </div>
+        <div class="instruction_details">
+            <div class="instruction_heading">
+                <h5> Start Tutoring</h5>
+            </div>
+            <div class="instruction_descript">
+                <p> Start tutoring once your verified profile is complete; we'll match you with students based on their preferences, location, and your subject offerings. Be prepared to communicate with potential students, schedule lessons, and deliver high-quality instruction to help them achieve academic success.
+               </p>
+            </div>
+        </div>
+
+    </div>
+    <div class="instruction d-flex flex-row instruction_9">
+        
+        <div class="instruction_details">
+            <div class="instruction_descript">
+                <p>Remember, creating a detailed and informative profile will significantly increase your chances of attracting students. Highlight your qualifications, experience, and teaching approach to stand out from other tutors. Good luck, and we look forward to welcoming you as a tutor on our website!</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+    <br><br>
+    <!-- tutor info -->
+    <div class="works_container-in">
+        
+        <div class="works_row">
+            <div class="works_flex-container d-flex flex-wrap justify-content-center">
+               
+                <div class="works_flex-box-in">
+                   
+                    <a href="#"><span class="dot">
+                        <span class="dot">
+                            <i class="bi bi-person"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40S" fill="white" class="bi bi-person" viewBox="0 0 16 16">
+                                <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"/>
+                              </svg>
+                            </span>
+                        </a>
+                        <br>
+                        <h4>Teach students online/offline</h4>
+                </div>
+                <div class="works_flex-box-in">
+                   
+                    <a href="#"><span class="dot">
+                        <span class="dot">
+                            <i class="bi bi-currency-rupee"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40S" fill="white" class="bi bi-currency-rupee" viewBox="0 0 16 16">
+                                <path d="M4 3.06h2.726c1.22 0 2.12.575 2.325 1.724H4v1.051h5.051C8.855 7.001 8 7.558 6.788 7.558H4v1.317L8.437 14h2.11L6.095 8.884h.855c2.316-.018 3.465-1.476 3.688-3.049H12V4.784h-1.345c-.08-.778-.357-1.335-.793-1.732H12V2H4v1.06Z"/>
+                              </svg>
+                        </a>
+                        <br>
+                        <h4>Start earning income</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+    <div class="testimonials">
+        <center>
+            <h2 style="color:#13272f;">Listen to our Instructors</h1>
+        </center>
+        <div class="testimonial_border"></div>
+        <div class="testimonials_row d-flex justify-content-center flex-wrap reveal">
+
+            <div class="testimonial d-flex flex-column">
+                <div class="testimonial_up d-flex">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-person-circle align-self-start" viewBox="0 0 16 16">
+                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                        <path fill-rule="evenodd"
+                            d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                    </svg>
+
+
+                    <div class="testimonial_right d-flex flex-column justify-content-start">
+                        <div class="testimonial_name">P.Suresh</div>
+                        <div class="testimonial_stars">⭐⭐⭐⭐</div>
+                        <div class="testimonial_course">Completed C++ course</div>
+                    </div>
+                </div>
+
+                <div class="testimonial_down">
+                    <p class="testimonial_description">
+                        "I 've been part of the community for one year and the way you all arrange skilloriented
+                        seminars and amazing events is amazing. Learned many skills and got exposure to the outer
+                        world."
+                    </p>
+                </div>
+
+            </div>
+            <div class="testimonial d-flex flex-column">
+                <div class="testimonial_up d-flex">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-person-circle align-self-start" viewBox="0 0 16 16">
+                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                        <path fill-rule="evenodd"
+                            d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                    </svg>
+
+
+                    <div class="testimonial_right d-flex flex-column justify-content-start">
+                        <div class="testimonial_name">P.Suresh</div>
+                        <div class="testimonial_stars">⭐⭐⭐⭐</div>
+                        <div class="testimonial_course">Completed C++ course</div>
+                    </div>
+                </div>
+
+                <div class="testimonial_down">
+                    <p class="testimonial_description">
+                        "I 've been part of the community for one year and the way you all arrange skilloriented
+                        seminars and amazing events is amazing. Learned many skills and got exposure to the outer
+                        world."
+                    </p>
+                </div>
+
+            </div>
+            <div class="testimonial d-flex flex-column">
+                <div class="testimonial_up d-flex">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-person-circle align-self-start" viewBox="0 0 16 16">
+                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                        <path fill-rule="evenodd"
+                            d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                    </svg>
+
+
+                    <div class="testimonial_right d-flex flex-column justify-content-start">
+                        <div class="testimonial_name">P.Suresh</div>
+                        <div class="testimonial_stars">⭐⭐⭐⭐</div>
+                        <div class="testimonial_course">Completed C++ course</div>
+                    </div>
+                </div>
+
+                <div class="testimonial_down">
+                    <p class="testimonial_description">
+                        "I 've been part of the community for one year and the way you all arrange skilloriented
+                        seminars and amazing events is amazing. Learned many skills and got exposure to the outer
+                        world."
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="d-flex flex-row">
+                <div class="footer-col">
+                    <h4>Edumoon</h4>
+                    <ul>
+                        <li><a href="#">about us</a></li>
+                        <li><a href="#">clubs</a></li>
+                        <li><a href="#">Recent Events</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>get help</h4>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <ul>
+                        <li><a href="#">email</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>follow us</h4>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/theEduMoon1/" target="_blank">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://twitter.com/theedumoon?lang=en" target="_blank">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://www.instagram.com/theedumoon/?hl=en" target="_blank">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://in.linkedin.com/company/edumoon" target="_blank">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const revealfun = () => {
+            var reveals = document.querySelectorAll(".reveal");
+            var elementTop = reveals[0].getBoundingClientRect().top;
+            // var elementTop2 = reveals[1].getBoundingClientRect().top;
+
+            var elementVisible = 700;
+            // console.log(elementTop);
+
+            if (elementTop <= elementVisible) {
+
+                if (!reveals[0].classList.contains("active")) {
+                    let animation = anime({
+                        targets: '.testimonial',
+
+                        scale: {
+                            value: [0, 1],
+                            duration: 1500,
+                            delay: 100,
+                            easing: 'easeOutQuad'
+                        },
+
+                    });
+                    reveals[0].classList.add("active");
+                }
+
+            }
+
+        }
+
+        window.addEventListener("scroll", revealfun);
+
+        var tl = anime.timeline({
+            easing: 'easeOutExpo',
+            duration: 750
+        });
+
+        // Add children
+        tl
+            .add({
+                targets: '.instruction_1',
+                translateX: 86,
+                opacity: [0, 1],
+            })
+            .add({
+                targets: '.instruction_2',
+                translateX: 86,
+                opacity: [0, 1],
+            })
+            .add({
+                targets: '.instruction_3',
+                translateX: 86,
+                opacity: [0, 1],
+            })
+            .add({
+                targets: '.instruction_4',
+                translateX: 86,
+                opacity: [0, 1],
+            })
+            .add({
+                targets: '.instruction_5',
+                translateX: 86,
+                opacity: [0, 1],
+            })
+            .add({
+                targets: '.instruction_6',
+                translateX: 86,
+                opacity: [0, 1],
+            })
+            .add({
+                targets: '.instruction_7',
+                translateX: 86,
+                opacity: [0, 1],
+            })
+            .add({
+                targets: '.instruction_8',
+                translateX: 86,
+                opacity: [0, 1],
+            })
+            .add({
+                targets: '.instruction_9',
+                translateX: 86,
+                opacity: [0, 1],
+            })
+
+
+    </script>
+</body>
+
+</html>
